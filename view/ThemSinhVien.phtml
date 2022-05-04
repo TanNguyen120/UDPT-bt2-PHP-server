@@ -1,0 +1,39 @@
+<h1>THÊM SINH VIÊN</h1>
+<hr/>
+
+ <form method ="POST">
+ 	<input type="hidden" name="action" value="add" />
+    <table>
+        <tr>
+            <td>Mã sinh viên</td>
+            <td><input id="Text1" name="MSSV" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Họ và tên</td>
+            <td><input id="Text2" name="HoTen" type="text" /></td>                   
+        </tr>
+        <tr>
+            <td>Ngày Sinh</td>
+            <td><input id="Text3" name="NgaySinh" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Địa chỉ</td>
+            <td><input id="Text4" name="DiaChi" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Địa chỉ</td>
+            <td><input id="Text4" name="DienThoai" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Mã Khoa</td>
+            <td><input id="Text5" name="MaKhoa" type="text" /></td>
+        </tr>                
+    </table>
+    <input type="submit" name="btnAddNewRecord" value="Thêm Sinh Viên Mới" />
+    <?php 
+    	if (isset($data) && $data != "")
+    	{
+    		echo $data;
+    	}
+    ?>   
+</form>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <?php require("include/meta.phtml"); ?>     
+    </head>
+    <body>
+        <div id="header"></div>              
+        <div id="topbar"></div>        
+        <div id="wrapper">   
+            <div id="smallbar"></div> 
+            <div id="content">    
+                <!-- ------------------------------------ -->
+                <!-- ------------------------------------ -->
+                <!-- BEGIN: Nội dung chính của trang web  -->
+                <div id="primary">                    
+                    <?php require($VIEW); ?>
+                </div>
+                <!-- END: Nội dung chính của trang web  -->
+                <!-- ------------------------------------ -->
+                <!-- ------------------------------------ -->
+                <div id="secondary">
+                    <?php require("include/secondary.phtml"); ?>                    
+                </div>
+            </div>            
+            <div id="footer"></div>
+        </div>         
+    </body>
+</html>

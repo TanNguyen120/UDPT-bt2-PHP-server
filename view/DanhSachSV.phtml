@@ -1,0 +1,18 @@
+<h1>DANH SÁCH SINH VIÊN</h1>
+<hr/>
+
+<form action="Index.php" method="get">
+    <input type="text" name="keyword"/>
+    <input type="submit" value="search"/>
+    <input type="hidden" name="action" value="search"/>
+</form>
+
+<?php
+foreach ($data as $item) 
+{   
+
+    print " <a href='?action=show&MSSV={$item->MSSV}'>{$item->MSSV}</a> - <span style='width:200px; display:inline-block'>{$item->HOTEN} </span><a href='?action=delete&MSSV={$item->MSSV}'>Xoá</a> <br/> ";
+}
+
+?>
+
