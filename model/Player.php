@@ -1,36 +1,48 @@
 <?php
 
-class SinhVienModel
+class PlayerModel
 {
-    public $MSSV;
-    public $HOTEN;
-    
+    public $PlayerID;
+    public $FullName;
+    public $ClubID;
+    public $DOB;
+    public $Position;
+    public $Nationality;
+    public $Number;
+
     function __construct() {
-        $this->MSSV = "";
-        $this->HOTEN = "";
-        $this->NGAYSINH = "";
-        $this->DIACHI = "";
-        $this->DIENTHOAI = "";
-        $this->MAKHOA = "";
+        $this->PlayerID = "";
+        $this->FullName = "";
+        $this->ClubID = "";
+        $this->DOB = "";
+        $this->Position = "";
+        $this->Nationality = "";
+        $this->Number = "";
     }
     
+    // Hàm lấy tất cả các dòng có trong bảng player
     public static function listAll() {
         $mysqli = connectToDb();
         $mysqli->query("SET NAMES utf8");
-        $query = "SELECT * FROM SinhVien";
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT * FROM Player LIMIT 10";
         $result = $mysqli->query($query);
-        $dssv = array();
+        $playerList = array();
         if ($result) 
         {            
             foreach ($result as $row) {
-                $sv = new SinhVienModel();
-                $sv->HOTEN = $row["HoTen"];
-                $sv->MSSV = $row["MSSV"];     
-                $dssv[] = $sv; //add an item into array
+                $player = new PlayerModel();
+                $player->PlayerID = $row["PlayerID"];
+                $player->FullName = $row["FullName"];
+                $player->ClubID = $row["ClubID"];
+                $player->DOB = $row["DOB"];
+                $player->Position = $row["Position"];
+                $player->Number = $row["Number"];
+                $playerList[] = $player; //add an item into array
             }
         }
         $mysqli->close();
-        return $dssv;
+        return $playerList;
     }
     public static function find($keyword) {
         $mysqli = connectToDb();        

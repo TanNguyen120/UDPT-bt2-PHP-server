@@ -1,13 +1,14 @@
 <?php
-function connect()
+function connectToDb()
 {
+    // các biến để kết nối tới data base được đặt theo đề bài
     $user = "root";
     $pass = "root";
-    $db = "SinhVienDB";	
+    $db = "footballdb";	
     $mysqli = new mysqli("localhost", $user, $pass, $db );
     if ($mysqli->connect_errno )
     {
-        die( "Couldn't connect to MySQL" );
+        die( "Couldn't connect to MySQL server" );
     }
     return $mysqli;
 }
