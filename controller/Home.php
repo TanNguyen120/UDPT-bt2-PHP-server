@@ -4,8 +4,8 @@ class HomeController
 {
     public function index()
     {
-        $data = "Hello world !!!!";        
-        $VIEW = "./view/TrangChu.phtml";
+        $data = " !!! EveryThing about Foot Ball !!!!";        
+        $VIEW = "./view/mainPage.phtml";
         require("./template/template.phtml");
     }
 }

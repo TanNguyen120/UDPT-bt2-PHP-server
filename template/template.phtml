@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html>
+
     <head>
-        <title></title>
-        <?php require("include/meta.phtml"); ?>     
+        <title>football database</title>
+        <?php require("include/meta.phtml"); ?>
     </head>
+
     <body>
-        <div id="header"></div>              
-        <div id="topbar"></div>        
-        <div id="wrapper">   
-            <div id="smallbar"></div> 
-            <div id="content">    
+        <div id="header"></div>
+        <div id="topbar"></div>
+        <div id="wrapper">
+            <div id="smallbar"></div>
+            <div id="content">
                 <!-- ------------------------------------ -->
                 <!-- ------------------------------------ -->
                 <!-- BEGIN: Nội dung chính của trang web  -->
-                <div id="primary">                    
+                <div id="primary">
                     <?php require($VIEW); ?>
                 </div>
                 <!-- END: Nội dung chính của trang web  -->
                 <!-- ------------------------------------ -->
                 <!-- ------------------------------------ -->
                 <div id="secondary">
-                    <?php require("include/secondary.phtml"); ?>                    
+                    <?php require("include/secondary.phtml"); ?>
                 </div>
-            </div>            
+            </div>
             <div id="footer"></div>
-        </div>         
+        </div>
     </body>
+
 </html>

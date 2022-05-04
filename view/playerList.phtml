@@ -1,0 +1,21 @@
+<h1>List Of all player in database</h1>
+<hr />
+
+<form action="Index.php" method="get">
+    <input type="text" name="keyword" />
+    <input type="submit" value="search" />
+    <input type="hidden" name="action" value="search" />
+</form>
+
+<?php
+foreach ($data as $item) 
+{   
+    echo "<ul>";
+    echo "<li>";
+    echo $item->FullName . " - " . $item->ClubID . " - " . $item->DOB . " - " . $item->Position . " - " . $item->Number;
+    echo "</li>";
+    echo "</ul>";
+
+}
+
+?>

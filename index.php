@@ -1,19 +1,22 @@
 <?php
-require_once("./controller/Home.php");
-require_once("./controller/SinhVien.php");
-require_once("./model/SinhVien.php");
-require_once("config/dbconnect.php"); 
+require_once("./include/allLibraries.php");
 
 $action = "";
 if (isset($_REQUEST["action"]))
 {    
     $action = $_REQUEST["action"];
 }
+
+if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
+    echo 'We don\'t have mysqli!!!';
+} else {
+    echo 'Phew we have it!';
+}
  
 switch ($action)
 {
     case "list":      
-        $controller = new SinhVienController();
+        $controller = new PlayerController();
         $controller->listAll();
         break;
     case "search":
