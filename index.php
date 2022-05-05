@@ -7,11 +7,6 @@ if (isset($_REQUEST["action"]))
     $action = $_REQUEST["action"];
 }
 
-if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
-    echo 'We don\'t have mysqli!!!';
-} else {
-    echo 'Phew we have it!';
-}
  
 switch ($action)
 {

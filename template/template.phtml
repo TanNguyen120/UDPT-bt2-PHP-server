@@ -7,25 +7,31 @@
     </head>
 
     <body>
-        <div id="header"></div>
-        <div id="topbar"></div>
-        <div id="wrapper">
-            <div id="smallbar"></div>
-            <div id="content">
-                <!-- ------------------------------------ -->
-                <!-- ------------------------------------ -->
-                <!-- BEGIN: Nội dung chính của trang web  -->
-                <div id="primary">
-                    <?php require($VIEW); ?>
-                </div>
-                <!-- END: Nội dung chính của trang web  -->
-                <!-- ------------------------------------ -->
-                <!-- ------------------------------------ -->
-                <div id="secondary">
-                    <?php require("include/secondary.phtml"); ?>
+        <div class="container">
+            <div class="row" id="header">
+                <div class="col" id="logo"></div>
+                <div class="col" id="webTile"> <a id="linkTile" href="index.php">FOOT BALL DATABASE</a> </div>
+                <div class="col" id="logo2"></div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <!-- ------------------------------------ -->
+                    <!-- ------------------------------------ -->
+                    <!-- BEGIN: Nội dung chính của trang web  -->
+                    <div class="col-md-8">
+                        <?php require($VIEW); ?>
+                    </div>
+                    <!-- END: Nội dung chính của trang web  -->
+                    <!-- ------------------------------------ -->
+                    <!-- ------------------------------------ -->
+                    <div class="col-md-4">
+                        <?php require("include/secondary.phtml"); ?>
+                    </div>
                 </div>
             </div>
-            <div id="footer"></div>
+            <div class="row">
+                <div id="footer"></div>
+            </div>
         </div>
     </body>
 
