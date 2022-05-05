@@ -4,9 +4,19 @@ class PlayerController
 {
     public function listAll()
     {
-        $data = PlayerModel::listAll();        
-        $VIEW = "./view/playerList.phtml";
-        require("./template/template.phtml");
+        if(isset($_REQUEST["page"]))
+        {
+            $pageCount = 0;
+            $page = $_REQUEST["page"];
+            $data = PlayerModel::listAll($page);
+            $pageCount = PlayerModel::countAllPage();
+            $VIEW = "./view/playerList.phtml";
+            require("./template/template.phtml");
+        }
+        else{
+            echo "Wrong URL !";
+        }
+        
     }
     
     public function search()

@@ -21,11 +21,12 @@ class PlayerModel
     }
     
     // Hàm lấy tất cả các dòng có trong bảng player
-    public static function listAll() {
+    public static function listAll($page) {
+        $offset = ($page -1) * 10;
         $mysqli = connectToDb();
         $mysqli->query("SET NAMES utf8");
         // Câu lệnh truy vấn theo cấu trúc SQL
-        $query = "SELECT * FROM Player AS Pl JOIN Club as Cl on PL.CLubID = Cl.CLubID LIMIT 10";
+        $query = "SELECT * FROM Player AS P JOIN Club as C on P.CLubID = C.CLubID LIMIT ${offset},10";
         $result = $mysqli->query($query);
         $playerList = array();
         if ($result) 
@@ -36,6 +37,7 @@ class PlayerModel
                 $player->FullName = $row["FullName"];
                 $player->ClubID = $row["ClubName"];
                 $player->DOB = $row["DOB"];
+                $player->Nationality = $row["Nationality"];
                 $player->Position = $row["Position"];
                 $player->Number = $row["Number"];
                 $playerList[] = $player; //add an item into array
@@ -43,6 +45,21 @@ class PlayerModel
         }
         $mysqli->close();
         return $playerList;
+    }
+    // Hàm trả về tổng số trang của bảng player
+    public static function countAllPage() {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT COUNT(*) FROM Player";
+
+        // sử dụng fetch array để ta có thể lấy kết quả
+        $result = $mysqli->query($query)->fetch_array();
+        if($result) {
+            // để có được số trang để phân trang ta lấy kết quả chia cho số dòng mỗi lần lấy
+            $page = ceil(($result[0] /10));
+        }
+        return $page;
     }
     public static function find($keyword) {
         $mysqli = connectToDb();        
