@@ -25,7 +25,7 @@ class PlayerModel
         $mysqli = connectToDb();
         $mysqli->query("SET NAMES utf8");
         // Câu lệnh truy vấn theo cấu trúc SQL
-        $query = "SELECT * FROM Player LIMIT 10";
+        $query = "SELECT * FROM Player AS Pl JOIN Club as Cl on PL.CLubID = Cl.CLubID LIMIT 10";
         $result = $mysqli->query($query);
         $playerList = array();
         if ($result) 
@@ -34,7 +34,7 @@ class PlayerModel
                 $player = new PlayerModel();
                 $player->PlayerID = $row["PlayerID"];
                 $player->FullName = $row["FullName"];
-                $player->ClubID = $row["ClubID"];
+                $player->ClubID = $row["ClubName"];
                 $player->DOB = $row["DOB"];
                 $player->Position = $row["Position"];
                 $player->Number = $row["Number"];

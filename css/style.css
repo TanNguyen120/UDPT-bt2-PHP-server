@@ -1,6 +1,12 @@
 body {
   margin: 0 0 0 0;
   background-color: #8527aa;
+  background-position: bottom;
+  background-position-x: center;
+  background-position-y: bottom;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-image: url('images/css/webBG.png');
   color: rgb(255, 255, 255);
   text-align: center;
   font-family: 'Radikal', sans-serif;
@@ -10,6 +16,7 @@ body {
   font-family: 'Radikal', sans-serif;
   background-color: #501950;
   color: #ffffff;
+  margin-bottom: 15px;
 }
 
 #topbar {
@@ -30,9 +37,19 @@ body {
 }
 
 #footer {
-  height: 30px;
-  background-color: #365666;
+  background-image: url('images/css/gfooterBG.png');
+  text-align: left;
+  font-family: sans-serif;
+  padding: 4rem 4rem;
+  background-color: #37003c;
+  background-position: bottom;
+  background-position-x: center;
+  background-position-y: bottom;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  color: whitesmoke;
 }
+
 #webTile {
   /* font-family: 'Radikal', sans-serif; */
   font-size: 30px;
@@ -60,6 +77,22 @@ body {
   background-image: url('images/css/league-logo-191618.png');
 }
 
+.results {
+  font-size: 18px;
+  text-align: center;
+  color: whitesmoke;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  font-weight: 400;
+  background-color: #8527aa;
+  background-position: bottom;
+  background-position-x: center;
+  background-position-y: bottom;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
 #logo2 {
   float: right;
   height: 100px;
@@ -79,6 +112,13 @@ body {
   /* overflow, background -> keep the columns in equal height */
   overflow: hidden;
   background: url('images/css/container-bd.png') repeat-y;
+}
+#mainPageBox {
+  width: 870px;
+  height: 500px;
+  background-image: url('images/css/mainPageBG.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #primary {
@@ -101,6 +141,17 @@ body {
   background-color: #f7f7f7;
 }
 
+.features {
+  text-decoration: none;
+  color: white;
+}
+
+.noBulletList {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
 h1,
 h2,
 h3,
@@ -119,7 +170,7 @@ h2 {
 }
 h3 {
   font-size: 12pt;
-  color: #9d370f;
+  color: #9eb1c7;
 }
 
 input[type='text'],
@@ -164,16 +215,16 @@ select {
   margin: 7px 0px 8px 0px;
   list-style: none;
   border-top: 3px solid #cccccc;
-  padding: 0;
+  padding: 0px;
   background-color: #701774;
   color: white;
 }
 
 .sidebox .vmenu ul li {
   border-bottom: 3px solid #cccccc;
-  margin: 0;
+  margin: 0px;
   list-style: none;
-  padding: 6px 0 6px 5px;
+  /* padding: 6px 0 6px 5px; */
 }
 
 .sidebox .vmenu ul li:hover {

@@ -7,15 +7,41 @@
     <input type="hidden" name="action" value="search" />
 </form>
 
-<?php
-foreach ($data as $item) 
-{   
-    echo "<ul>";
-    echo "<li>";
-    echo $item->FullName . " - " . $item->ClubID . " - " . $item->DOB . " - " . $item->Position . " - " . $item->Number;
-    echo "</li>";
-    echo "</ul>";
-
-}
-
-?>
+<table class="table results" id="results">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">FullName</th>
+            <th scope="col">Club</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Position</th>
+            <th scope="col">Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+            $i = 1;
+            foreach ($data as $item) 
+            {
+                echo "<tr>";
+                echo "<th scope=\"row\">${i}</th>";
+                echo "<td>".$item->FullName."</td>";
+                echo "<td>".$item->ClubID."</td>";
+                echo "<td>".$item->DOB."</td>";
+                echo "<td>".$item->Position."</td>";
+                echo "<td>".$item->Number."</td>";
+                echo "</tr>";
+                $i++;
+            }
+        ?>
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>
