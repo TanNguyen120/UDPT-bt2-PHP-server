@@ -10,8 +10,12 @@ if (isset($_REQUEST["action"]))
  
 switch ($action)
 {
-    case "list":      
+    case "list_player":      
         $controller = new PlayerController();
+        $controller->listAll();
+        break;
+    case "list_club":
+        $controller = new ClubController();
         $controller->listAll();
         break;
     case "search":
