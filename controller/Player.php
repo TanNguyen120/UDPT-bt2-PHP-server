@@ -18,14 +18,6 @@ class PlayerController
         }
         
     }
-    
-    public function search()
-    {
-        $keyword = $_REQUEST["keyword"];
-        $data = SinhVienModel::find($keyword);
-        $VIEW = "./view/DanhSachSV.phtml";
-        require("./template/template.phtml");
-    }
 
     public function listPlayerFromClub()
     {
@@ -37,6 +29,23 @@ class PlayerController
             $data = PlayerModel::listPlayerFromClub($page, $club);
             $pageCount = PlayerModel::countPlayerFromClub($club);
             $VIEW = "./view/playerClubList.phtml";
+            require("./template/template.phtml");
+        }
+        else{
+            echo "Wrong URL !";
+        }
+    }
+
+    public function findByNameSearchBar()
+    {
+        if(isset($_REQUEST["page"]) && isset($_REQUEST["playerName"]))
+        {
+            $pageCount = 0;
+            $page = $_REQUEST["page"];
+            $playerName = $_REQUEST["playerName"];
+            $data = PlayerModel::findName($playerName, $page);
+            $pageCount = PlayerModel::countPlayerNameSearch($playerName);
+            $VIEW = "./view/resultSearchPlayerName.phtml";
             require("./template/template.phtml");
         }
         else{

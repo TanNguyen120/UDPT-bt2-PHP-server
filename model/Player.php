@@ -105,23 +105,43 @@ class PlayerModel
     }
 
 
-    public static function find($keyword) {
+    public static function findName($keyword,$page) {
         $mysqli = connectToDb();        
         $mysqli->query("SET NAMES utf8");
-        $query = "SELECT * FROM SinhVien WHERE HoTen LIKE '%$keyword%'";
+        $offset = ($page -1) * 10;
+        $query = "SELECT * FROM Player AS P JOIN Club AS C ON P.ClubID = C.ClubID WHERE FullName LIKE '%$keyword%' LIMIT ${offset},10";
         $result = $mysqli->query($query);
-        $dssv = array();
+        $playerList = array();
         if ($result) 
         {            
             foreach ($result as $row) {
-                $sv = new SinhVienModel();
-                $sv->HOTEN = $row["HoTen"];
-                $sv->MSSV = $row["MSSV"];     
-                $dssv[] = $sv; //add an item into array
+                $player = new PlayerModel();
+                $player->PlayerID = $row["PlayerID"];
+                $player->FullName = $row["FullName"];
+                $player->Nationality = $row["Nationality"];
+                $player->ClubID = $row["ClubName"];
+                $player->Number = $row["Number"];
+                $player->Position = $row["Position"];
+                $playerList[]=$player; //add an item into array
             }
         }
         $mysqli->close();
-        return $dssv;
+        return $playerList;
+    }
+
+    public static function countPlayerNameSearch($keyword) {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT COUNT(*) FROM Player WHERE FullName LIKE '%$keyword%'";
+        // sử dụng fetch array để ta biến dòng sql thành mảng
+        $result = $mysqli->query($query)->fetch_array();
+        
+        if ($result) 
+        {            
+            $page = ceil(($result[0] /10));
+        }
+        return $page;
     }
 
     public static function add($sv)

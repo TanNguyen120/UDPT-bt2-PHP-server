@@ -22,10 +22,9 @@ switch ($action)
         $controller = new PlayerController();
         $controller->listPlayerFromClub();
         break;
-    case "search":
-        $controller = new SinhVienController();
-        $keyword = $_REQUEST["keyword"];
-        $controller->search($keyword);
+    case "searchPlayerName":
+        $controller = new PlayerController();
+        $controller->findByNameSearchBar();
         break;
     case "add":
         $controller = new SinhVienController();
