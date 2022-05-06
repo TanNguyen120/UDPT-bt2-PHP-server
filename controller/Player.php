@@ -27,6 +27,23 @@ class PlayerController
         require("./template/template.phtml");
     }
 
+    public function listPlayerFromClub()
+    {
+        if(isset($_REQUEST["page"]) && isset($_REQUEST["club"]))
+        {
+            $pageCount = 0;
+            $page = $_REQUEST["page"];
+            $club = $_REQUEST["club"];
+            $data = PlayerModel::listPlayerFromClub($page, $club);
+            $pageCount = PlayerModel::countPlayerFromClub($club);
+            $VIEW = "./view/playerClubList.phtml";
+            require("./template/template.phtml");
+        }
+        else{
+            echo "Wrong URL !";
+        }
+    }
+
     public function add()
     {
         $data = "";

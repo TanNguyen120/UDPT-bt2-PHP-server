@@ -93,6 +93,11 @@ body {
   background-repeat: no-repeat;
 }
 
+.clubResult:hover {
+  background-color: #7b4a8f;
+  cursor: pointer;
+}
+
 #logo2 {
   float: right;
   height: 100px;
@@ -184,6 +189,12 @@ select {
   font-size: 13pt;
 }
 
+#clubName {
+  font-size: 60px;
+  font-weight: 600;
+  text-align: center;
+  color: rgb(48, 136, 177);
+}
 .sidebox {
   margin-left: 10px;
   margin-right: 10px;
@@ -382,4 +393,29 @@ input[type='text'] {
   outline: 0;
   height: 30px;
   width: 275px;
+}
+
+.pagination > li > a {
+  background-color: white;
+  color: #5a4181;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+  color: #42314d;
+  background-color: #eee;
+  border-color: #ddd;
+}
+
+.pagination > .active > a {
+  color: white;
+  background-color: #5a4181 !important;
+  border: solid 1px #5a4181 !important;
+}
+
+.pagination > .active > a:hover {
+  background-color: #5a4181 !important;
+  border: solid 1px #5a4181;
 }

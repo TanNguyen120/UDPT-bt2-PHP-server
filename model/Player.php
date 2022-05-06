@@ -36,7 +36,6 @@ class PlayerModel
                 $player->PlayerID = $row["PlayerID"];
                 $player->FullName = $row["FullName"];
                 $player->ClubID = $row["ClubName"];
-                $player->DOB = $row["DOB"];
                 $player->Nationality = $row["Nationality"];
                 $player->Position = $row["Position"];
                 $player->Number = $row["Number"];
@@ -56,11 +55,56 @@ class PlayerModel
         // sử dụng fetch array để ta có thể lấy kết quả
         $result = $mysqli->query($query)->fetch_array();
         if($result) {
-            // để có được số trang để phân trang ta lấy kết quả chia cho số dòng mỗi lần lấy
+            // để có được số trang để phân trang ta lấy kết quả chia cho số dòng mỗi lần lấy rồi làm tròn lên 
             $page = ceil(($result[0] /10));
         }
         return $page;
     }
+
+    // Hàm lấy tất cả các player trong đội bóng
+    public static function listPlayerFromClub($page, $clubName) {
+        $mysqli = connectToDb();
+        $offset = ($page -1) * 10;
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT * FROM Player AS P JOIN Club as C on P.CLubID = C.CLubID WHERE C.ClubName = '$clubName' LIMIT ${offset},10";
+        $result = $mysqli->query($query);
+        $playerList = array();
+        if ($result) 
+        {            
+            foreach ($result as $row) {
+                $player = new PlayerModel();
+                $player->PlayerID = $row["PlayerID"];
+                $player->FullName = $row["FullName"];
+                $player->Nationality = $row["Nationality"];
+                $player->ClubID = $row["ClubName"];
+                $player->Number = $row["Number"];
+                $player->Position = $row["Position"];
+                $playerList[]=$player; //add an item into array
+            }
+        }
+        $mysqli->close();
+        return $playerList;
+    }
+
+
+    // hàm đếm tất cả các cầu thủ trong câu lạc bộ
+    public static function countPlayerFromClub($clubName) {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT COUNT(*) FROM Player AS P JOIN Club as C on P.CLubID = C.CLubID WHERE C.ClubName = '$clubName'";
+        // sử dụng fetch array để ta biến dòng sql thành mảng
+        $result = $mysqli->query($query)->fetch_array();
+        $count = 0;
+        if ($result) 
+        {            
+            $page = ceil(($result[0] /10));
+        }
+        return $page;
+    }
+
+
     public static function find($keyword) {
         $mysqli = connectToDb();        
         $mysqli->query("SET NAMES utf8");

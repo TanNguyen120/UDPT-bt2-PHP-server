@@ -18,6 +18,10 @@ switch ($action)
         $controller = new ClubController();
         $controller->listAll();
         break;
+    case "list_player_from_club":
+        $controller = new PlayerController();
+        $controller->listPlayerFromClub();
+        break;
     case "search":
         $controller = new SinhVienController();
         $keyword = $_REQUEST["keyword"];
