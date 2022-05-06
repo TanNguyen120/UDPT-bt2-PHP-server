@@ -1,12 +1,17 @@
-<h1>All Player Have <?php echo $playerName ?> In Their Name</h1>
+<h1><?php echo $webTile ?></h1>
 <hr />
 
-<div class="input-group rounded">
-    <input type="search" class="form-control rounded" id="searchNameVal" placeholder="Search Player with name"
-        aria-label="Search" aria-describedby="search-addon" />
-    <span class="input-group-text border-0" id="search-addon-searchPlayerName">
-        <i class="bi bi-search" id="playerNameSearch"></i>
-    </span>
+<div class="row">
+    <div class="col-md-6">
+        <div class="input-group rounded">
+            <input type="search" class="form-control rounded" id="searchNameVal" placeholder="Search Player with name"
+                aria-label="Search" aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon-searchPlayerName">
+                <i class="bi bi-search" id="playerNameSearch"></i>
+            </span>
+        </div>
+    </div>
+    <div class="col"></div>
 </div>
 
 <table class="table results" id="results">

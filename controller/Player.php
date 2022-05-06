@@ -11,6 +11,7 @@ class PlayerController
             $data = PlayerModel::listAll($page);
             $pageCount = PlayerModel::countAllPage();
             $VIEW = "./view/playerList.phtml";
+            $webTile = "List of all players";
             require("./template/template.phtml");
         }
         else{
@@ -44,12 +45,30 @@ class PlayerController
             $page = $_REQUEST["page"];
             $playerName = $_REQUEST["playerName"];
             $data = PlayerModel::findName($playerName, $page);
+            $webTile = "List of players have ".$playerName." in their name";
             $pageCount = PlayerModel::countPlayerNameSearch($playerName);
             $VIEW = "./view/resultSearchPlayerName.phtml";
             require("./template/template.phtml");
         }
         else{
             echo "Wrong URL !";
+        }
+    }
+    // hàm này chỉ thực hiện việc tạo view đến trang search player name
+    public function findByName()
+    {
+        $webTile = "Search and Filter players";
+        $VIEW = "./view/findPlayerName.phtml";
+        require("./template/template.phtml");
+    }
+
+    public function ajaxSearchName()
+    {
+        if(isset($_REQUEST["playerName"]))
+        {
+            $playerName = $_REQUEST["playerName"];
+            $data = PlayerModel::findName($playerName,1);
+            echo json_encode($data);
         }
     }
 

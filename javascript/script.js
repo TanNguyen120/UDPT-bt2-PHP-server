@@ -20,9 +20,31 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    function searchAndFilter() {
+        $(document).on('click', '#search-addon-searchPlayerNameAjax', function () {
+            const name = $('#searchNameVal').val();
+            $.ajax({
+                url: 'Index.php?action=ajaxSearchName&page=1&playerName=' + name,
+                type: 'GET',
+                success: function (respond) {
+                    let i = 1;
+                    const array = JSON.parse(respond);
+                    alert(JSON.stringify(array));
+                    array.forEach((jsonObj) => {
+
+                        const html = `<tr><th scope="row">${i}</th><td>${jsonObj.FullName}</td><td>.${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
+                        $('#ajaxTableBody').append(html);
+                        i++;
+                    });
+                }
+            });
+        });
+    }
+
 
     //*********************************************************************************************************************************** */
     // Phần Khai Báo Hàm
     findAllPlayerOfClub();
     findPlayerByNameSearchBar();
+    searchAndFilter();
 });

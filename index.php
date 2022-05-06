@@ -26,6 +26,14 @@ switch ($action)
         $controller = new PlayerController();
         $controller->findByNameSearchBar();
         break;
+    case "findPlayerName":
+        $controller = new PlayerController();
+        $controller->findByName();
+        break;
+    case "ajaxSearchName":
+        $controller = new PlayerController();
+        $controller->ajaxSearchName();
+        break;
     case "add":
         $controller = new SinhVienController();
         $controller->add();
