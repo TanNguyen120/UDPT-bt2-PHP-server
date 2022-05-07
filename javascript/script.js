@@ -95,6 +95,25 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    function editClubAjax() {
+        $(document).on('click', '.clubEditSubmit', function () {
+            // get the current row
+            const currentRow = $(this).closest("tr");
+
+            const ClubID = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+            const ClubName = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+            const ShortName = currentRow.find("td:eq(2)").text(); // get current row 3rd TD
+            const StadiumID = currentRow.find('#stadiumSelectClubEdit').val();
+            const CoachID = currentRow.find('#coachSelectClubEdit').val();
+            const data = ClubID + "\n" + ClubName + "\n" + ShortName + "\n" + StadiumID + "\n" + CoachID;
+
+            // ajax call GET
+
+            alert(data);
+        });
+    }
+
+
 
     //*********************************************************************************************************************************** */
     // Phần Khai Báo Hàm
@@ -103,4 +122,5 @@ jQuery(document).ready(function ($) {
     searchAndFilter();
     showSliderNumber();
     filterSearchWithManyCondition();
+    editClubAjax();
 });

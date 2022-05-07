@@ -9,6 +9,7 @@
             <th scope="col">ShortName</th>
             <th scope="col">Stadium</th>
             <th scope="col">Coach</th>
+            <th scope="col">Edit</th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +19,7 @@
             foreach ($data as $item) 
             {   
                 echo "<tr class='clubResultEdit'>";
-                echo "<th>".$item->ClubID."</th>";
+                echo "<td>".$item->ClubID."</td>";
                 echo "<td contenteditable='true'>".$item->ClubName."</td>";
                 echo "<td contenteditable='true'>".$item->ShortName."</td>";
 
@@ -47,6 +48,7 @@
                     };
                 };
                 echo"</select></td>";
+                echo '<td><button type="button" class="btn btn-secondary clubEditSubmit">Submit</button </td>';
                 echo "</tr>";
                 $i++;
             }
