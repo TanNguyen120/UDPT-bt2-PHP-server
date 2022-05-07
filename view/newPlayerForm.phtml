@@ -3,7 +3,8 @@
         <h1> A New Player To DataBase</h1>
     </div>
     <div class="row">
-        <form>
+        <form id="addPlayerForm" method="GET" action="Index.php">
+            <input type="hidden" name="action" value="formSubmitNewPlayer" />
             <div class="form-group">
                 <div class="col">
                     <label for="formPlayerName">PlayerFullName</label>
@@ -230,7 +231,7 @@
                     <option value="zimbabwean">Zimbabwean</option>
                 </select>
             </div>
-            <div class="form-group form-check">
+            <div class="form-group">
                 <label for="clubSelect" class="form-label">Player's Club</label>
                 <select class="form-select" t aria-label="Nationality" id="clubSelect">
                     <?php
@@ -239,6 +240,11 @@
                         }
                     ?>
                 </select>
+                <div class="col">
+                    <label for="customRange3" class="form-label">Player Number</label>
+                    <input type="range" class="form-range" min="0" max="100" value="0" id="customRange3">
+                    <output id="numberOutPut">0</output>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
