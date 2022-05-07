@@ -57,6 +57,10 @@ class PlayerController
     // hàm này chỉ thực hiện việc tạo view đến trang search player name
     public function findByName()
     {
+        $allNationality = PlayerModel::getAllCountry();
+        $allClub = PlayerModel::getAllClub();
+        $allPosition = PlayerModel::getAllPosition();
+        $allNumber = PlayerModel::getAllNumber();
         $webTile = "Search and Filter players";
         $VIEW = "./view/findPlayerName.phtml";
         require("./template/template.phtml");
@@ -69,6 +73,66 @@ class PlayerController
             $playerName = $_REQUEST["playerName"];
             $data = PlayerModel::findName($playerName,1);
             echo json_encode($data);
+        }
+    }
+
+    public function ajaxSearchFilter()
+    {
+        $FullName = $_REQUEST["FullName"];
+        $ClubName = $_REQUEST["ClubName"];
+        $Position = $_REQUEST["Position"];
+        $Nationality = $_REQUEST["Nationality"];
+        $Number = $_REQUEST["Number"];
+        $searchCon = "";
+
+        // phần tạo điều kiện từ các thông số của request
+        if($FullName !== "none")
+        {
+            $searchCon .= "FullName LIKE '%".$FullName."%'";
+        }
+        if($ClubName !== "none")
+        {
+            if($searchCon !== "")
+            {
+                $searchCon .= " AND ClubName = '".$ClubName."'";
+            }
+            else
+            {
+                $searchCon .= "ClubName = '".$ClubName."'";
+            }
+        }
+        if($Position !== "none")
+        {
+            if($searchCon !== "")
+            {
+                $searchCon .= " AND Position = '".$Position."'";
+            }
+            else
+            {
+                $searchCon .= "Position = '".$Position."'";
+            }
+        }
+        if($Number !== "none")
+        {
+            if($searchCon !== "")
+            {
+                $searchCon .= " AND Number = '".$Number."'";
+            }
+            else
+            {
+                $searchCon .= "Number = '".$Number."'";
+            }
+        }
+        if($Nationality !== "none")
+        {
+            if($searchCon !== "")
+            {
+                $searchCon .= " AND Nationality = '".$Nationality."'";
+            }
+            else
+            {
+                $searchCon .= "Nationality = '".$Nationality."'";
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 <h1><?php echo $webTile ?></h1>
 <hr />
 
-<div class="row">
+<div class="row filterRow">
     <div class="col-md-6">
         <div class="input-group rounded">
             <input type="search" class="form-control rounded" id="searchNameVal" placeholder="Search Player with name"
@@ -11,10 +11,57 @@
             </span>
         </div>
     </div>
-    <div class="col"></div>
+    <div class="col">
+        <div class="row">
+            <button type="button" class="btn btn-info" id="filterSearchBtn">
+                <i class="bi bi-funnel"></i> Search
+            </button>
+        </div>
+    </div>
 </div>
-<div class="row" id="ajaxContent">
+<div class="row filterRow">
+    <div class="col">
+        <label for="customRange3" class="form-label">Player Number</label>
+        <input type="range" class="form-range" min="0" max="100" value="0" id="customRange3">
+        <output id="numberOutPut">1</output>
 
+    </div>
+    <div class="col">
+        <label for="nationSelect" class="form-label">Player Nationality</label>
+        <select class="form-select" t aria-label="Nationality" id="nationSelect">
+            <option value="">All</option>
+            <?php
+                foreach($allNationality as $row){
+                    echo '<option value='.$row.">".$row."</option>";
+                } 
+            ?>
+        </select>
+    </div>
+</div>
+<div class="row filterRow">
+    <div class="col">
+        <label for="clubSelect" class="form-label">Player Club</label>
+        <select class="form-select" t aria-label="club" id="clubSelect">
+            <option value="">All</option>
+            <?php
+                foreach($allClub as $row){
+                    echo '<option value='.$row.">".$row."</option>";
+                } 
+            ?>
+        </select>
+    </div>
+    <div class="col">
+        <label for="positionSelect" class="form-label">Player Position</label>
+        <select class="form-select" t aria-label="position" id="positionSelect">
+            <option value="">All</option>
+
+            <?php
+                foreach($allPosition as $row){
+                    echo '<option value='.$row.">".$row."</option>";
+                } 
+            ?>
+        </select>
+    </div>
 </div>
 <table class="table results" id="results">
     <thead>

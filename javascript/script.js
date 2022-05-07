@@ -29,7 +29,6 @@ jQuery(document).ready(function ($) {
                 success: function (respond) {
                     let i = 1;
                     const array = JSON.parse(respond);
-                    alert(JSON.stringify(array));
                     array.forEach((jsonObj) => {
                         const html = `<tr><th scope="row">${i}</th><td>${jsonObj.FullName}</td><td>.${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
                         $('#ajaxTableBody').append(html);
@@ -40,10 +39,47 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    function filterSearchWithManyCondition() {
+        $(document).on('click', '#filterSearchBtn', function () {
+            let name = $('#searchNameVal').val();
+            if (name === '') {
+                name = 'none';
+            }
+            let club = $('#clubSelect').val();
+            if (club === '') {
+                club = 'none';
+            }
+            let position = $('#positionSelect').val();
+            if (position === '') {
+                position = 'none';
+            }
+            let nationality = $('#nationSelect').val();
+            if (nationality === '') {
+                nationality = 'none';
+            }
+            let number = $('#customRange3').val();
+            if (number === '0') {
+                number = 'none';
+            }
+
+        });
+    }
+
+
+    function showSliderNumber() {
+
+        $('#customRange3').on('change', function () {
+            const value = $(this).val();
+            $('#numberOutPut').text(value);
+        });
+    }
+
 
     //*********************************************************************************************************************************** */
     // Phần Khai Báo Hàm
     findAllPlayerOfClub();
     findPlayerByNameSearchBar();
     searchAndFilter();
+    showSliderNumber();
+    filterSearchWithManyCondition();
 });

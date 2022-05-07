@@ -125,6 +125,17 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+#filterSearchBtn {
+  background-color: #4d1c61;
+  color: white;
+  width: auto;
+  margin-left: 35px;
+}
+
+#filterSearchBtn:hover {
+  background-color: #923e8e;
+  cursor: pointer;
+}
 
 #primary {
   min-height: 650px;
@@ -201,6 +212,18 @@ select {
   color: blueviolet;
 }
 
+.form-select {
+  background-color: rgb(95, 19, 95);
+  color: white;
+  height: auto;
+}
+
+.filterRow {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: #5a4181 solid 1px;
+  border-right: #5a4181 solid 1px;
+}
 .sidebox h2 {
   letter-spacing: 1px;
   font-style: normal;

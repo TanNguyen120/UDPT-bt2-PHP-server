@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 class PlayerModel
 {
     public $PlayerID;
@@ -141,8 +143,89 @@ class PlayerModel
         {            
             $page = ceil(($result[0] /10));
         }
+        $mysqli->close();
         return $page;
     }
+
+    public static function CountRow() {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT COUNT(*) FROM Player";
+        // sử dụng fetch array để ta biến dòng sql thành mảng
+        $result = $mysqli->query($query);
+        $count = $result[0];
+        $mysqli->close();
+        return $count;
+    }
+
+    public static function getAllCountry() {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT DISTINCT Nationality FROM Player";
+        $result = $mysqli->query($query);
+        $countryList = array();
+        if($result)
+        {
+            foreach($result as $row){
+                $country = $row["Nationality"];
+                $countryList[] = $country;
+            }
+        }
+        $mysqli->close();
+        return $countryList; 
+    }
+
+        public static function getAllPosition() {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT DISTINCT Position FROM Player";
+        $result = $mysqli->query($query);
+        $mysqli->close();
+        $numbers = array();
+        if($result)
+        {
+            foreach($result as $row){
+                $number = $row["Position"];
+                $numbers[] = $number;
+            }
+        }
+        return $numbers; 
+    }
+
+
+    public static function getAllClub() {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT DISTINCT ClubName FROM Club";
+        $result = $mysqli->query($query);
+        $clubList = array();
+        if($result)
+        {
+            foreach($result as $row){
+                $club = $row["ClubName"];
+                $clubList[] = $club;
+            }
+        }
+        $mysqli->close();
+        return $clubList;
+    }
+    
+    public static function getAllNumber() {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT DISTINCT P.Number FROM Player AS P ORDER BY P.Number ASC";
+        $result = $mysqli->query($query);
+        $mysqli->close();
+        return $result;
+    }
+
+    
+
 
     public static function add($sv)
     {
