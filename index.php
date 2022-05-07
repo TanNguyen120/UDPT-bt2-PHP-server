@@ -60,6 +60,9 @@ switch ($action)
         $controller = new ClubController();
         $controller->addClubFromForm();
         break;
+    case "editClubPage":
+        $controller = new ClubController();
+        $controller->editClubPage();
     case "delete":
         $controller = new SinhVienController();
         $controller->delete();

@@ -61,5 +61,21 @@ class ClubController
         $VIEW = "./view/addClubPage.phtml";
         require("./template/template.phtml");
     }
+    public function editClubPage(){
+        if(isset($_REQUEST["page"]))
+        {
+            $pageCount = 0;
+            $page = $_REQUEST["page"];
+            $data = ClubModel::listAll($page);
+            $stadiums = StadiumModel::listAll();
+            $coaches = CoachModel::listAll();
+            $pageCount = ClubModel::countAllPage();
+            $VIEW = "./view/clubListEditable.phtml";
+            require("./template/template.phtml");
+        }
+        else{
+            echo "Wrong URL !";
+        }
+    }
 }
 ?>
