@@ -224,6 +224,29 @@ class PlayerModel
         return $result;
     }
 
+    public static function getPlayersWithCondition($condition) {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "SELECT * FROM Player AS P JOIN Club AS C ON P.ClubID = C.ClubID WHERE $condition";
+        $result = $mysqli->query($query);
+        $playerList = array();
+        if ($result) 
+        {            
+            foreach ($result as $row) {
+                $player = new PlayerModel();
+                $player->PlayerID = $row["PlayerID"];
+                $player->FullName = $row["FullName"];
+                $player->Nationality = $row["Nationality"];
+                $player->ClubID = $row["ClubName"];
+                $player->Number = $row['Number'];
+                $player->Position = $row['Position'];
+                $playerList[] = $player; //add an item into array
+            }
+        }
+        $mysqli->close();
+        return $playerList;
+    }
     
 
 

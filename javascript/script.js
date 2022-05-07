@@ -61,6 +61,19 @@ jQuery(document).ready(function ($) {
             if (number === '0') {
                 number = 'none';
             }
+            $.ajax({
+                url: 'Index.php?action=ajaxSearchFilter',
+                type: 'GET',
+                data: {
+                    FullName: name,
+                    ClubName: club,
+                    Position: position,
+                    Number: number,
+                    Nationality: nationality
+                }
+            }).done((respond) => {
+                alert(JSON.stringify(respond));
+            });
 
         });
     }
