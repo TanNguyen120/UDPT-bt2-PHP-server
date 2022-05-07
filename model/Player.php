@@ -250,19 +250,19 @@ class PlayerModel
     
 
 
-    public static function add($sv)
+    public static function addPlayer($pl)
     {
         $mysqli = connectToDb();        
         $mysqli->query("SET NAMES utf8");
 
-        $mssv = $sv->MSSV;
-        $hoten = $sv->HOTEN;
-        $ngaysinh = $sv->NGAYSINH;
-        $diachi = $sv->DIACHI;
-        $dienthoai = $sv->DIENTHOAI;
-        $makhoa = $sv->MAKHOA;
+        $FullName = $pl->FullName;
+        $ClubID = $pl->ClubID;
+        $Number = $pl->Number;
+        $Position = $pl->Position;
+        $Nationality = $pl->Nationality;
+        $PlayerID = $pl->PlayerID;
 
-        $query = "INSERT INTO SINHVIEN values ($mssv, '$hoten', '$ngaysinh', '$diachi', '$dienthoai', '$makhoa')";
+        $query = "INSERT INTO Player(PlayerID, ClubID,FullName,Position,Number,Nationality ) values ($PlayerID,$ClubID,$FullName,$Position,$Number,$Nationality)";
         
         if ($mysqli->query($query))        
             return 1;        

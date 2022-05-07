@@ -39,10 +39,13 @@ switch ($action)
         $controller = new PlayerController();
         $controller->ajaxSearchFilter();
         break;
-    case "add":
-        $controller = new SinhVienController();
+    case "addPlayer":
+        $controller = new PlayerController();
         $controller->add();
         break;
+    case "addPlayerPage":
+        $controller = new PlayerController();
+        $controller->addPlayerPage();
     case "show":
         $controller = new SinhVienController();
         $controller->show();

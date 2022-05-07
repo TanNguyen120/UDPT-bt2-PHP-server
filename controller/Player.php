@@ -145,19 +145,24 @@ class PlayerController
         }
     }
 
+    public function addPlayerPage(){
+        $VIEW = "./view/addPlayerForm.phtml";
+        require("./template/template.phtml");
+    }
+
     public function add()
     {
         $data = "";
-        if (isset($_REQUEST["MSSV"]))
+        if (isset($_REQUEST["PlayerID"]))
         {
-            $sv = new SinhVienModel();
-            $sv->MSSV = $_REQUEST["MSSV"];
-            $sv->HOTEN = $_REQUEST["HoTen"];
-            $sv->NGAYSINH = $_REQUEST["NgaySinh"];
-            $sv->DIACHI = $_REQUEST["DiaChi"];
-            $sv->DIENTHOAI = $_REQUEST["DienThoai"];
-            $sv->MAKHOA = $_REQUEST["MaKhoa"];
-            $result = SinhVienModel::add($sv);
+            $pl= new PlayerModel();
+            $pl->PlayerID = $_REQUEST["PlayerID"];
+            $pl->FullName = $_REQUEST["FullName"];
+            $pl->ClubName = $_REQUEST["ClubName"];
+            $pl->Position = $_REQUEST["Position"];
+            $pl->Nationality = $_REQUEST["Nationality"];
+            $pl->Number = $_REQUEST["Number"];
+            $result = PlayerModel::addPlayer($pl);
             if ($result == 1)
                 $data = "Thêm thành công";
             else
