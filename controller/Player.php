@@ -146,7 +146,8 @@ class PlayerController
     }
 
     public function addPlayerPage(){
-        $VIEW = "./view/addPlayerForm.phtml";
+        $allClub = ClubModel::getAllClub();
+        $VIEW = "./view/newPlayerForm.phtml";
         require("./template/template.phtml");
     }
 
