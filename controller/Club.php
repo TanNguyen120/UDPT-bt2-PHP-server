@@ -29,6 +29,8 @@ class ClubController
 
     public function addClubPage()
     {
+        $stadiums = StadiumModel::listAll();
+        $coaches = CoachModel::listAll();
         $VIEW = "./view/addClubPage.phtml";
         require("./template/template.phtml");
     }
