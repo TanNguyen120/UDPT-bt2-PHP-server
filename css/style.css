@@ -5,7 +5,7 @@ body {
   background-position-x: center;
   background-position-y: bottom;
   background-size: 100% auto;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-image: url('images/css/webBG.png');
   color: rgb(255, 255, 255);
   text-align: center;

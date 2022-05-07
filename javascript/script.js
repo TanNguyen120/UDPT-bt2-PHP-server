@@ -22,6 +22,7 @@ jQuery(document).ready(function ($) {
 
     function searchAndFilter() {
         $(document).on('click', '#search-addon-searchPlayerNameAjax', function () {
+
             const name = $('#searchNameVal').val();
             $.ajax({
                 url: 'Index.php?action=ajaxSearchName&page=1&playerName=' + name,
@@ -29,8 +30,9 @@ jQuery(document).ready(function ($) {
                 success: function (respond) {
                     let i = 1;
                     const array = JSON.parse(respond);
+
                     array.forEach((jsonObj) => {
-                        const html = `<tr><th scope="row">${i}</th><td>${jsonObj.FullName}</td><td>.${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
+                        const html = `<tr ><th scope="row">${i}</th><td>${jsonObj.FullName}</td><td>.${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
                         $('#ajaxTableBody').append(html);
                         i++;
                     });
@@ -72,10 +74,11 @@ jQuery(document).ready(function ($) {
                     Nationality: nationality
                 }
             }).done((respond) => {
+                $('.rowResult').remove();
                 let i = 1;
                 const array = JSON.parse(respond);
                 array.forEach((jsonObj) => {
-                    const html = `<tr><th scope="row">${i}</th><td>${jsonObj.FullName}</td><td>${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
+                    const html = `<tr class="rowResult"><th scope="row">${i}</th><td>${jsonObj.FullName}</td><td>${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
                     $('#ajaxTableBody').append(html);
                     i++;
                 });

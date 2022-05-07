@@ -134,8 +134,15 @@ class PlayerController
                 $searchCon .= "Nationality = '".$Nationality."'";
             }
         }
-        $data = PlayerModel::getPlayersWithCondition($searchCon);
-        echo json_encode($data);
+        if($searchCon ==="")
+        {
+            $data = PlayerModel::listAll(2);
+            echo json_encode($data);
+
+        }else{
+            $data = PlayerModel::getPlayersWithCondition($searchCon);
+            echo json_encode($data);
+        }
     }
 
     public function add()
