@@ -12,8 +12,8 @@
                         placeholder="Enter Player Full Name" name="FullName">
                 </div>
                 <div class="col">
-                    <label for="formPlayerName">Player ID</label>
-                    <input type="text" class="form-control" id="formPlayerName" aria-describedby="PlayerNameHelp"
+                    <label for="formPlayerID">Player ID</label>
+                    <input type="text" class="form-control" id="formPlayerID" aria-describedby="PlayerNameHelp"
                         placeholder="Player ID is an integer" name="PlayerID">
                 </div>
                 <div class="col">
@@ -317,4 +317,6 @@
         </form>
     </div>
 </div>
-<h1><?php echo $data ?></h1>
+<h1><?php if($data){
+    echo $data;
+} ?></h1>
