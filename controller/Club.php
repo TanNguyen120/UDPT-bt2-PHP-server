@@ -77,5 +77,22 @@ class ClubController
             echo "Wrong URL !";
         }
     }
+
+    public function ajaxEditClub(){
+        $club = new ClubModel;
+        $clubID = $_REQUEST["ClubID"];
+        $club->ClubID = $clubID;
+        $club->ClubName = $_REQUEST["ClubName"];
+        $club->Stadium = $_REQUEST["StadiumID"];
+        $club->Coach = $_REQUEST["CoachID"];
+        $club->ShortName = $_REQUEST["ShortName"];
+
+        $result = ClubModel::updateClub($club);
+        if($result){
+            echo "success adding";
+        }else{
+            echo "failed to add";
+        }
+    }
 }
 ?>

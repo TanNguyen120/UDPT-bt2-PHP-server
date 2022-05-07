@@ -85,5 +85,15 @@
             $mysqli->close();
             return $result;
         }
+
+
+        public static function updateClub(ClubModel $club) {
+            $mysqli = connectToDb();
+            $mysqli->query("SET NAMES utf8");
+            $query = "UPDATE Club SET ClubName = '$club->ClubName', ShortName = '$club->ShortName', CoachID = '$club->Coach', StadiumID = '$club->Stadium' WHERE ClubID = '$club->ClubID'";
+            $result = $mysqli->query($query);
+            $mysqli->close();
+            return $result; // trả về kết quả của câu lệnh truy vấn
+        }
     }
 ?>

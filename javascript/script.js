@@ -105,11 +105,24 @@ jQuery(document).ready(function ($) {
             const ShortName = currentRow.find("td:eq(2)").text(); // get current row 3rd TD
             const StadiumID = currentRow.find('#stadiumSelectClubEdit').val();
             const CoachID = currentRow.find('#coachSelectClubEdit').val();
-            const data = ClubID + "\n" + ClubName + "\n" + ShortName + "\n" + StadiumID + "\n" + CoachID;
 
             // ajax call GET
-
-            alert(data);
+            $.ajax({
+                url: 'Index.php?action=ajaxEditClub',
+                type: 'GET',
+                data: {
+                    ClubID: ClubID,
+                    ClubName: ClubName,
+                    ShortName: ShortName,
+                    StadiumID: StadiumID,
+                    CoachID: CoachID
+                }
+            }).done((respond) => {
+                alert(respond);
+                location.reload();
+            }).fail((respond) => {
+                alert('Failed to edit');
+            });
         });
     }
 
