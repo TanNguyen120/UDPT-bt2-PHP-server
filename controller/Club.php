@@ -27,6 +27,11 @@ class ClubController
         require("./template/template.phtml");
     }
 
+    public function addClubPage()
+    {
+        $VIEW = "./view/addClubPage.phtml";
+        require("./template/template.phtml");
+    }
     public function add()
     {
         $data = "";

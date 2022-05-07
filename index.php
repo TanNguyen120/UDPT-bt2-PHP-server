@@ -51,6 +51,11 @@ switch ($action)
         $controller = new PlayerController();
         $controller->add();
         break;
+
+    case "addClubPage":
+        $controller = new ClubController();
+        $controller->addClubPage();
+        break;
     case "delete":
         $controller = new SinhVienController();
         $controller->delete();
