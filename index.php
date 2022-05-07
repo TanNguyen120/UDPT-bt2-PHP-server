@@ -48,7 +48,8 @@ switch ($action)
         $controller->addPlayerPage();
         break;
     case "formSubmitNewPlayer":
-        echo("formSubmitNewPlayer");
+        $controller = new PlayerController();
+        $controller->add();
         break;
     case "delete":
         $controller = new SinhVienController();

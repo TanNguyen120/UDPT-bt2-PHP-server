@@ -262,9 +262,11 @@ class PlayerModel
         $Nationality = $pl->Nationality;
         $PlayerID = $pl->PlayerID;
 
-        $query = "INSERT INTO Player(PlayerID, ClubID,FullName,Position,Number,Nationality ) values ($PlayerID,$ClubID,$FullName,$Position,$Number,$Nationality)";
+        $query = "INSERT INTO player (PlayerID, ClubID,FullName,Position,Number,Nationality)".
+        "VALUES".
+        "('$PlayerID','$ClubID','$FullName','$Position','$Number','$Nationality')";
         
-        if ($mysqli->query($query))        
+        if (mysqli_query($mysqli, $query))        
             return 1;        
         return 0;
     }

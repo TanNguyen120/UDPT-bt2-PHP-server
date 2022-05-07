@@ -159,18 +159,18 @@ class PlayerController
             $pl= new PlayerModel();
             $pl->PlayerID = $_REQUEST["PlayerID"];
             $pl->FullName = $_REQUEST["FullName"];
-            $pl->ClubName = $_REQUEST["ClubName"];
+            $pl->ClubID = $_REQUEST["ClubID"];
             $pl->Position = $_REQUEST["Position"];
             $pl->Nationality = $_REQUEST["Nationality"];
             $pl->Number = $_REQUEST["Number"];
             $result = PlayerModel::addPlayer($pl);
             if ($result == 1)
-                $data = "Thêm thành công";
+                $data = "ADD PLAYER SUCCESSFULLY";
             else
-                $data = "Thêm bị lỗi";                
+                $data = "ADD PLAYER FAILS";                
         }
         
-        $VIEW = "./view/ThemSinhVien.phtml";
+        $VIEW = "./view/newPlayerForm.phtml";
         require("./template/template.phtml");
     }
 
