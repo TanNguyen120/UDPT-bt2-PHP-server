@@ -168,6 +168,27 @@ body {
   margin: 0; /* Remove margins */
 }
 
+.playerForm {
+  padding: 25px;
+  margin: 5px;
+}
+
+#addPlayerForm {
+  padding: 25px;
+  margin: 5px;
+  background-color: #7b4a8f;
+  border: #501950 solid 1px;
+}
+
+.btnPlayerForm {
+  background-color: #501950;
+  color: white;
+}
+.btnPlayerForm:hover {
+  background-color: #923e8e;
+  cursor: pointer;
+}
+
 h1,
 h2,
 h3,
