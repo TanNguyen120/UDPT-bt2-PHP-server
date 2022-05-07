@@ -2,6 +2,7 @@
 bài tập 2: tạo một web site động bằng ngôn ngữ php và javascript
 A PHP DYNAMIC WEB SERVER 
 
+CHÚ Ý: DO BÀI TẬP KHÔNG YÊU CẦU VIẾT THEO CHUẨN REST NÊN TẤT CẢ CÁC REQUEST ĐỀU LÀ GET REQUEST
 
 GUIDE:
 - Nhấn vào chữ football data base ở phần header để quay về trang chủ
