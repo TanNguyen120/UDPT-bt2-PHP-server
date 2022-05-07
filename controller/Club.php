@@ -32,45 +32,33 @@ class ClubController
         $stadiums = StadiumModel::listAll();
         $coaches = CoachModel::listAll();
         $VIEW = "./view/addClubPage.phtml";
+        $data = "please fill in the form above";
         require("./template/template.phtml");
     }
-    public function add()
-    {
-        $data = "";
-        if (isset($_REQUEST["MSSV"]))
+    
+    public function addClubFromForm(){
+        $clubName = $_REQUEST["ClubName"];
+        $stadiumID = $_REQUEST["StadiumID"];
+        $coachID = $_REQUEST["CoachID"];
+        $shortName = $_REQUEST["ShortName"];
+        $clubID = $_REQUEST["ClubID"];
+        $club = new ClubModel();
+        $club->ClubName = $clubName;
+        $club->StadiumID = $stadiumID;
+        $club->Coach = $coachID;
+        $club->ShortName = $shortName;
+        $club->ClubID = $clubID;
+        $result = ClubModel::addToDataBase($club,$stadiumID);
+        $data = '';
+        if($result){
+            $data= "Successfully added!";
+        }else
         {
-            $sv = new SinhVienModel();
-            $sv->MSSV = $_REQUEST["MSSV"];
-            $sv->HOTEN = $_REQUEST["HoTen"];
-            $sv->NGAYSINH = $_REQUEST["NgaySinh"];
-            $sv->DIACHI = $_REQUEST["DiaChi"];
-            $sv->DIENTHOAI = $_REQUEST["DienThoai"];
-            $sv->MAKHOA = $_REQUEST["MaKhoa"];
-            $result = SinhVienModel::add($sv);
-            if ($result == 1)
-                $data = "Thêm thành công";
-            else
-                $data = "Thêm bị lỗi";                
+            $data= "Failed to add!";
         }
-        
-        $VIEW = "./view/ThemSinhVien.phtml";
-        require("./template/template.phtml");
-    }
-
-    public function show()
-    {
-        $MSSV = $_REQUEST["MSSV"];
-        $data = SinhVienModel::get($MSSV);
-        $VIEW = "./view/ThongTinSV.phtml";
-        require("./template/template.phtml");
-    }
-
-    public function delete()
-    {
-        $MSSV = $_REQUEST["MSSV"];
-        $result = SinhVienModel::delete($MSSV);        
-        $data = SinhVienModel::listAll();        
-        $VIEW = "./view/DanhSachSV.phtml";
+        $stadiums = StadiumModel::listAll();
+        $coaches = CoachModel::listAll();
+        $VIEW = "./view/addClubPage.phtml";
         require("./template/template.phtml");
     }
 }

@@ -22,8 +22,8 @@
             if ($result) {
                 foreach ($result as $row) {
                     $coach = new CoachModel();
-                    $coach->coachID = $row["coachID"];
-                    $coach->SName = $row["CFullName"];
+                    $coach->CoachID = $row["CoachID"];
+                    $coach->CFullName = $row["CFullName"];
                     $coach->Nationality = $row["Nationality"];
                     $coachList[] = $coach; //add an item into array
                 }

@@ -72,7 +72,18 @@
                 // để có được số trang để phân trang ta lấy kết quả chia cho số dòng mỗi lần lấy và làm tròn lên
                 $pageCount = ceil($result[0] / 10);
             }
+            $mysqli->close();
             return $pageCount;
+        }
+
+        public static function addToDataBase($club,$stadiumID) {
+            $mysqli = connectToDb();
+            $mysqli->query("SET NAMES utf8");
+            $charSplit = str_split($club->Stadium);
+            $query = "INSERT INTO Club VALUES ('$club->ClubID','$club->ClubName','$club->ShortName','$stadiumID','$club->Coach')";
+            $result = $mysqli->query($query);
+            $mysqli->close();
+            return $result;
         }
     }
 ?>
