@@ -72,9 +72,14 @@ jQuery(document).ready(function ($) {
                     Nationality: nationality
                 }
             }).done((respond) => {
-                alert(JSON.stringify(respond));
+                let i = 1;
+                const array = JSON.parse(respond);
+                array.forEach((jsonObj) => {
+                    const html = `<tr><th scope="row">${i}</th><td>${jsonObj.FullName}</td><td>${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
+                    $('#ajaxTableBody').append(html);
+                    i++;
+                });
             });
-
         });
     }
 
