@@ -1,4 +1,4 @@
-<h1>editClubPage Of all club in data base</h1>
+<h1>Change Club Information</h1>
 <hr />
 
 <table class="table results" id="results">
@@ -13,6 +13,7 @@
     </thead>
     <tbody>
         <?php
+            // tao table tu ket qua o controller
             $i = 1;
             foreach ($data as $item) 
             {   
@@ -20,7 +21,9 @@
                 echo "<th>".$item->ClubID."</th>";
                 echo "<td contenteditable='true'>".$item->ClubName."</td>";
                 echo "<td contenteditable='true'>".$item->ShortName."</td>";
-                echo "<td> <select class=\"form-select\" t aria-label=\"Nationality\" id=\"stadiumSelect\" name=\"StadiumID\">";
+
+                //tao combo box cho viec chon san van dong
+                echo "<td> <select class=\"form-select\" t aria-label=\"Nationality\" id=\"stadiumSelectClubEdit\" name=\"StadiumID\">";
                 foreach($stadiums as $row){
                     if(strcmp($row->SName, $item->Stadium)==0)
                     {
@@ -31,7 +34,19 @@
                     };
                 };
                 echo"</select></td>";
-                echo "<td>".$item->Coach."</td>";
+
+                //tao combo box cho viec edit huan luyen vien
+                echo "<td> <select class=\"form-select\" t aria-label=\"Nationality\" id=\"coachSelectClubEdit\" name=\"CoachID\">";
+                foreach($coaches as $row){
+                    if(strcmp($row->CFullName, $item->Coach)==0)
+                    {
+                         echo '<option selected="selected" value='.$row->CoachID.'>'.$row->CFullName."</option>";
+
+                    }else{
+                    echo '<option value='.$row->CoachID.'>'.$row->CFullName."</option>";
+                    };
+                };
+                echo"</select></td>";
                 echo "</tr>";
                 $i++;
             }
