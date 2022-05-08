@@ -54,6 +54,8 @@ jQuery(document).ready(function ($) {
         });
     }
 
+
+
     function deleteSinglePlayer() {
         $(document).on('click', '.deletePlayerBtn', function () {
             const currentRow = $(this).closest("tr");

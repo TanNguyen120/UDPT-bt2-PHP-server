@@ -1,11 +1,17 @@
-<?php
+<?php if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+} 
 require_once("./include/allLibraries.php");
+
+// CHECK FOR THE LOGIN STATUS
+
 
 $action = "";
 if (isset($_REQUEST["action"]))
 {    
     $action = $_REQUEST["action"];
 }
+
 
  
 switch ($action)
@@ -88,6 +94,9 @@ switch ($action)
         $controller = new UserController();
         $controller->toLoginPage();
         break;
+    case "formLogin":
+        $controller = new UserController();
+        $controller->formLogin();
     default:
         $controller = new HomeController();
         $controller->index();
