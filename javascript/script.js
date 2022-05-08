@@ -126,6 +126,13 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    function toEditPlayerPage() {
+        $(document).on('click', '.ListPlayerTableRow', function () {
+            const playerID = $(this).find("td:eq(0)").text();
+            window.location = 'http://localhost/UDPT-bt2-PHP-server/Index.php?action=editPlayerPage&PlayerID=' + playerID;
+        });
+    }
+
 
 
     //*********************************************************************************************************************************** */
@@ -136,4 +143,5 @@ jQuery(document).ready(function ($) {
     showSliderNumber();
     filterSearchWithManyCondition();
     editClubAjax();
+    toEditPlayerPage();
 });

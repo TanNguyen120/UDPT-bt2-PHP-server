@@ -304,5 +304,22 @@ class PlayerModel
         return $r;
         
     }
+    public static function findByID($playerID){
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        $query = "SELECT * FROM Player WHERE PlayerID='$playerID'";
+        $result = $mysqli->query($query);
+        $player = new PlayerModel();
+        if ($row = $result->fetch_object() ) {
+            $player->PlayerID = $row->PlayerID;
+            $player->FullName = $row->FullName;
+            $player->Position = $row->Position;
+            $player->Number = $row->Number;
+            $player->Nationality = $row->Nationality;
+            $player->ClubID = $row->ClubID;
+        }
+        $mysqli->close();
+        return $player;
+    }
 }
 ?>

@@ -152,6 +152,14 @@ class PlayerController
         require("./template/template.phtml");
     }
 
+    public function editPlayerFromForm(){
+        $player = new PlayerModel();
+        $player->PlayerID = $_REQUEST["PlayerID"];
+        $player->FullName = $_REQUEST["FullName"];
+        $player->ClubID = $_REQUEST["ClubName"];
+
+    }
+
     public function add()
     {
         $data = "";
@@ -175,6 +183,15 @@ class PlayerController
         require("./template/template.phtml");
     }
 
+
+    public function editPlayerPage(){
+        $allClub = ClubModel::getAllClub();
+        $player = PlayerModel::findByID($_REQUEST["PlayerID"]);
+        $data ='please fill all the information on the form above';
+        $VIEW = "./view/editPlayerInfo.phtml";
+        require("./template/template.phtml");
+
+    }
     public function show()
     {
         $MSSV = $_REQUEST["MSSV"];

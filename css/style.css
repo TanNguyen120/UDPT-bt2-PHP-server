@@ -189,6 +189,11 @@ body {
   cursor: pointer;
 }
 
+.ListPlayerTableRow:hover {
+  background-color: #7b4a8f;
+  cursor: pointer;
+}
+
 h1,
 h2,
 h3,

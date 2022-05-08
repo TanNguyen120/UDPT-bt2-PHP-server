@@ -68,6 +68,14 @@ switch ($action)
         $controller = new ClubController();
         $controller->ajaxEditClub();
         break;
+    case "editPlayerPage":
+        $controller = new PlayerController();
+        $controller->editPlayerPage();
+        break;
+    case "formEditPlayer":
+        $controller = new PlayerController();
+        $controller->editPlayerFromForm();
+        break;
     case "delete":
         $controller = new SinhVienController();
         $controller->delete();

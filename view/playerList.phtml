@@ -17,7 +17,7 @@
 <table class="table results" id="results">
     <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">PlyerID</th>
             <th scope="col">FullName</th>
             <th scope="col">Club</th>
             <th scope="col">Nationality</th>
@@ -30,8 +30,8 @@
             $i = 1;
             foreach ($data as $item) 
             {
-                echo "<tr>";
-                echo "<th scope=\"row\">${i}</th>";
+                echo "<tr class=\"ListPlayerTableRow\">";
+                echo "<td>$item->PlayerID</td>";
                 echo "<td>".$item->FullName."</td>";
                 echo "<td>".$item->ClubID."</td>";
                 echo "<td>".$item->Nationality."</td>";
