@@ -212,6 +212,20 @@ body {
   cursor: pointer;
 }
 
+.loginForm {
+  padding: 25px;
+  margin: 15px;
+  background-color: #7b4a8f;
+  border: #501950 solid 1px;
+  text-align: left;
+}
+
+.formLogin {
+  padding: 25px;
+  border-bottom: #d8b2d8 solid 1px;
+  text-align: left;
+}
+
 .playerTableBtn {
   background-color: #491f49;
   color: white;

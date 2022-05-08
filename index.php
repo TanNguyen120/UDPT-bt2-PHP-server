@@ -84,6 +84,10 @@ switch ($action)
         $controller = new PlayerController();
         $controller->deleteMultiplePlayer();
         break;
+    case "toLoginPage":
+        $controller = new UserController();
+        $controller->toLoginPage();
+        break;
     default:
         $controller = new HomeController();
         $controller->index();

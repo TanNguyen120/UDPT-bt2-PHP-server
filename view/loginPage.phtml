@@ -1,0 +1,31 @@
+<div class="row">
+    <form class="loginForm" method="POST" action="Index.php">
+        <div class="row">
+            <h1>Login</h1>
+        </div>
+        <div class="row formLogin">
+            <input type="hidden" name="action" value="formAddClub" />
+            <div class="form-group">
+                <label for="formUserName">UserName</label>
+                <input type="text" class="form-control" id="formUserName" aria-describedby="userNameHelp"
+                    placeholder="Enter user name">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your user name with anyone
+                    else.</small>
+            </div>
+        </div>
+        <div class="row formLogin">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+
+            </div>
+        </div>
+        <div class="row formLogin">
+            <div clas='col-md-3'>
+                <button type="submit" class="btn btn-secondary">Login</button>
+            </div>
+        </div>
+    </form>
+</div>
