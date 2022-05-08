@@ -239,5 +239,18 @@ class PlayerController
         $VIEW = "./view/DanhSachSV.phtml";
         require("./template/template.phtml");
     }
+    public function deleteMultiplePlayer(){
+        $listPlayer = array();
+        $number = $_REQUEST["numberToDelete"];
+        for($i = 1; $i <= $number; $i++){
+            $listPlayer[] = $_REQUEST["PlayerID".$i];
+        }
+        $result = PlayerModel::deleteMultiplePlayer($listPlayer);
+        if($result){
+            echo "success";
+        }else{
+            echo "failed";
+        }
+    }
 }
 ?>

@@ -194,6 +194,14 @@ body {
   color: white;
 }
 
+.deleteMultiplePlayerBtn {
+  background-color: #cc0bcc;
+  color: white;
+}
+.deleteMultiplePlayerBtn:hover {
+  background-color: #d81313;
+  cursor: pointer;
+}
 .deletePlayerBtn:hover {
   background-color: #c21818;
   cursor: pointer;

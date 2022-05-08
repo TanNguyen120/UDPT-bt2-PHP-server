@@ -72,6 +72,9 @@
             <th scope="col">Nationality</th>
             <th scope="col">Position</th>
             <th scope="col">Number</th>
+            <th scope="col">Delete</th>
+            <th scope="col"> Edit </th>
+            <th scope="col">Single Delete</th>
         </tr>
     </thead>
     <tbody id="ajaxTableBody">
@@ -86,12 +89,21 @@
                 echo "<td>".$item->Nationality."</td>";
                 echo "<td>".$item->Position."</td>";
                 echo "<td>".$item->Number."</td>";
+                echo '<td><input class="form-check-input" type="checkbox" value="'.$item->PlayerID.'" class="playerListDeleteCheck" name="checkDeletePlayer"></td>';
+                echo '<td> <button type="button" class="btn playerTableBtn"> <i class="bi bi-pencil-square"></i> edit</button></td>';
+                echo '<td> <button type="button" class="btn deletePlayerBtn"><i class="bi bi-person-x"></i> delete</button></td>';
                 echo "</tr>";
                 $i++;
             }
         ?> -->
     </tbody>
 </table>
+<div class="row">
+    <div class="col-md-6">
+        <button type="button" class="btn deleteMultiplePlayerBtn"><i class="bi bi-person-x"></i> delete all checked
+            Player</button></td>';
+    </div>
+</div>
 <!--
 <nav aria-label="Page navigation example">
     <ul class="pagination">

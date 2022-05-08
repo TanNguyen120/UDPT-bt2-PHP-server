@@ -337,5 +337,15 @@ class PlayerModel
         $mysqli->close();
         return $player;
     }
+    public static function deleteMultiplePlayer(array $idList){
+        $mysqli = connectToDb();        
+        $mysqli->query("SET NAMES utf8");
+        $query = "DELETE FROM Player WHERE PlayerID IN (".implode(",",$idList).")";
+        $r = 0;
+        if ($mysqli->query($query))       
+            $r = 1;
+        $mysqli->close();
+        return $r;
+    }
 }
 ?>

@@ -42,7 +42,10 @@ jQuery(document).ready(function ($) {
                     const array = JSON.parse(respond);
 
                     array.forEach((jsonObj) => {
-                        const html = `<tr class="ListPlayerTableRow"><td>${jsonObj.PlayerID}</td><td>${jsonObj.FullName}</td><td>.${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
+                        let html = `<tr class="ListPlayerTableRow"><td>${jsonObj.PlayerID}</td><td>${jsonObj.FullName}</td><td>.${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td>`;
+                        html += '<td><input class="form-check-input" type="checkbox" value="' + jsonObj.PlayerID + '" class="playerListDeleteCheck" name="checkDeletePlayer"></td>';
+                        html += '<td> <button type="button" class="btn playerTableBtn"> <i class="bi bi-pencil-square"></i> edit</button></td>';
+                        html += '<td> <button type="button" class="btn playerTableBtn"> <i class="bi bi-trash"></i> delete</button></td></tr>';
                         $('#ajaxTableBody').append(html);
                         i++;
                     });
@@ -66,6 +69,34 @@ jQuery(document).ready(function ($) {
                 alert(respond);
             });
         });
+    }
+
+    function deleteMultiplePlayer() {
+        $(document).on('click', '.deleteMultiplePlayerBtn', function () {
+            alert('delete multiple player');
+            const $boxes = $('input[type=checkbox]:checked').map(function (_, el) {
+                return $(el).val();
+            }).get();
+            let i = 1;
+            let url = 'Index.php?action=deleteMultiplePlayer&';
+            $boxes.forEach(function (box) {
+                url += 'PlayerID' + i + '=' + box + '&';
+                if (i == $boxes.length) {
+                    url += 'numberToDelete' + '=' + i;
+                }
+                i++;
+            });
+            $.ajax({
+                url: url,
+                type: 'GET'
+            }).done(function (respond) {
+                alert(respond);
+                location.reload();
+            }).fail(function (respond) {
+                alert(respond);
+            });
+        });
+
     }
 
     function filterSearchWithManyCondition() {
@@ -105,7 +136,12 @@ jQuery(document).ready(function ($) {
                 let i = 1;
                 const array = JSON.parse(respond);
                 array.forEach((jsonObj) => {
-                    const html = `<tr class="rowResult ListPlayerTableRow"><td>${jsonObj.PlayerID}</td><td>${jsonObj.FullName}</td><td>${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
+                    let html = '<tr class="rowResult ListPlayerTableRow"><td>' + jsonObj.PlayerID + '</td>';
+                    html += `<td>${jsonObj.FullName}</td><td>${jsonObj.FullName}</td>`;
+                    html += `<td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td>`;
+                    html += '<td><input class="form-check-input" type="checkbox" value="' + jsonObj.PlayerID + '" class="playerListDeleteCheck" name="checkDeletePlayer"></td>';
+                    html += '<td> <button type="button" class="btn playerTableBtn"> <i class="bi bi-pencil-square"></i> edit</button></td>';
+                    html += '<td> <button type="button" class="btn playerTableBtn"> <i class="bi bi-trash"></i> delete</button></td></tr>';
                     $('#ajaxTableBody').append(html);
                     i++;
                 });
@@ -175,4 +211,5 @@ jQuery(document).ready(function ($) {
     toEditPlayerPage();
     findAllPlayerOfClubByPage();
     deleteSinglePlayer();
+    deleteMultiplePlayer();
 });

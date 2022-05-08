@@ -80,6 +80,10 @@ switch ($action)
         $controller = new PlayerController();
         $controller->deleteSinglePlayer();
         break;
+    case "deleteMultiplePlayer":
+        $controller = new PlayerController();
+        $controller->deleteMultiplePlayer();
+        break;
     default:
         $controller = new HomeController();
         $controller->index();
