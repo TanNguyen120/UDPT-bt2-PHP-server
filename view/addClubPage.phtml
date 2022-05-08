@@ -10,46 +10,56 @@
         <form id="addPlayerForm" method="GET" action="Index.php">
             <input type="hidden" name="action" value="formAddClub" />
             <div class="form-group playerForm">
-                <div class="col">
-                    <label for="formClubName">Club Name</label>
-                    <input type="text" class="form-control" id="formClubName" aria-describedby="PlayerNameHelp"
-                        placeholder="Enter ClubName Name" name="ClubName">
+                <div class="row">
+                    <div class="col-md-6 formcol">
+                        <label for="formClubName">Club Name</label>
+                        <input type="text" class="form-control" id="formClubName" aria-describedby="PlayerNameHelp"
+                            placeholder="Enter ClubName Name" name="ClubName" size="10">
+                    </div>
                 </div>
-                <div class="col">
-                    <label for="formClubID">Club ID</label>
-                    <input type="text" class="form-control" id="formClubID" aria-describedby="PlayerNameHelp"
-                        placeholder="Club ID is an integer" name="ClubID">
+                <div class="row">
+                    <div class="col-md-4 formcol">
+                        <label for="formClubID">Club ID</label>
+                        <input type="text" class="form-control" id="formClubID" aria-describedby="PlayerNameHelp"
+                            placeholder="Club ID is an integer" name="ClubID" size="5">
+                    </div>
                 </div>
             </div>
             <div class="form-group playerForm">
-                <div class="col">
-                    <label for="formClubShortName">Short Name</label>
-                    <input type="text" class="form-control" id="formClubShortName" aria-describedby="PlayerNameHelp"
-                        placeholder="Short name for club name" name="ShortName">
-                </div>
-                <label for="stadiumSelect" class="form-label">Stadium</label>
-                <select class="form-select" t aria-label="Nationality" id="stadiumSelect" name="StadiumID">
-                    <?php
+                <div class="row">
+                    <div class="col">
+                        <label for="formClubShortName">Short Name</label>
+                        <input type="text" class="form-control" id="formClubShortName" aria-describedby="PlayerNameHelp"
+                            placeholder="Short name for club name" name="ShortName">
+                    </div>
+                    <div class="col">
+                        <label for="stadiumSelect" class="form-label">Stadium</label>
+                        <select class="form-select" t aria-label="Nationality" id="stadiumSelect" name="StadiumID">
+                            <?php
                         foreach($stadiums as $row){
                             echo '<option value='.$row->StadiumID.'>'.$row->SName."</option>";
                         }
                     ?>
-                </select>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="form-group playerForm">
-                <div class="col">
-                    <label for="coachSelect" class="form-label">Coach</label>
-                    <select class="form-select" t aria-label="Coach" id="coachSelect" name="CoachID">
-                        <?php
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="coachSelect" class="form-label">Coach</label>
+                        <select class="form-select" t aria-label="Coach" id="coachSelect" name="CoachID">
+                            <?php
                         foreach($coaches as $row){
                             echo '<option value='.$row->CoachID.">".$row->CFullName."</option>";
                         }
                     ?>
-                    </select>
+                        </select>
+                    </div>
                 </div>
             </div>
+            <h1><?php echo $data ?></h1>
             <button type="submit" class="btn btnPlayerForm">Submit</button>
         </form>
     </div>
 </div>
-<h1><?php echo $data ?></h1>
