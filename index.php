@@ -76,9 +76,9 @@ switch ($action)
         $controller = new PlayerController();
         $controller->editPlayerFromForm();
         break;
-    case "delete":
-        $controller = new SinhVienController();
-        $controller->delete();
+    case "deletePlayer":
+        $controller = new PlayerController();
+        $controller->deleteSinglePlayer();
         break;
     default:
         $controller = new HomeController();

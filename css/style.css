@@ -189,11 +189,30 @@ body {
   cursor: pointer;
 }
 
+.deletePlayerBtn {
+  background-color: #cc0bcc;
+  color: white;
+}
+
+.deletePlayerBtn:hover {
+  background-color: #c21818;
+  cursor: pointer;
+}
+
 .ListPlayerTableRow:hover {
   background-color: #7b4a8f;
   cursor: pointer;
 }
 
+.playerTableBtn {
+  background-color: #491f49;
+  color: white;
+  width: auto;
+}
+.playerTableBtn:hover {
+  background-color: #923e8e;
+  cursor: pointer;
+}
 h1,
 h2,
 h3,

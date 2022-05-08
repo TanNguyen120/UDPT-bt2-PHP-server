@@ -13,6 +13,16 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    function findAllPlayerOfClubByPage() {
+        $('#results').on('click', '.clubPlayerBtn', function () {
+            const currentRow = $(this).closest("tr");
+
+            const clubName = currentRow.find("td:eq(2)").text();
+            alert(clubName);
+
+        });
+    }
+
     function findPlayerByNameSearchBar() {
         $(document).on('click', '#search-addon-searchPlayerName', function () {
             const name = $('#searchNameVal').val();
@@ -32,11 +42,28 @@ jQuery(document).ready(function ($) {
                     const array = JSON.parse(respond);
 
                     array.forEach((jsonObj) => {
-                        const html = `<tr ><th scope="row">${i}</th><td>${jsonObj.FullName}</td><td>.${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
+                        const html = `<tr class="ListPlayerTableRow"><td>${jsonObj.PlayerID}</td><td>${jsonObj.FullName}</td><td>.${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
                         $('#ajaxTableBody').append(html);
                         i++;
                     });
                 }
+            });
+        });
+    }
+
+    function deleteSinglePlayer() {
+        $(document).on('click', '.deletePlayerBtn', function () {
+            const currentRow = $(this).closest("tr");
+            const playerID = currentRow.find("td:eq(0)").text();
+            $.ajax({
+                url: 'Index.php?action=deletePlayer&playerID=' + playerID,
+                type: 'GET'
+            }).done(function (respond) {
+                alert(respond);
+                location.reload();
+            }
+            ).fail(function (respond) {
+                alert(respond);
             });
         });
     }
@@ -78,7 +105,7 @@ jQuery(document).ready(function ($) {
                 let i = 1;
                 const array = JSON.parse(respond);
                 array.forEach((jsonObj) => {
-                    const html = `<tr class="rowResult"><th scope="row">${i}</th><td>${jsonObj.FullName}</td><td>${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
+                    const html = `<tr class="rowResult ListPlayerTableRow"><td>${jsonObj.PlayerID}</td><td>${jsonObj.FullName}</td><td>${jsonObj.ClubID}</td><td>${jsonObj.Nationality}</td><td>${jsonObj.Position}</td><td>${jsonObj.Number}</td> </tr>`;
                     $('#ajaxTableBody').append(html);
                     i++;
                 });
@@ -127,8 +154,10 @@ jQuery(document).ready(function ($) {
     }
 
     function toEditPlayerPage() {
-        $(document).on('click', '.ListPlayerTableRow', function () {
-            const playerID = $(this).find("td:eq(0)").text();
+        $(document).on('click', '.playerTableBtn', function () {
+            const currentRow = $(this).closest("tr");
+
+            const playerID = currentRow.find("td:eq(0)").text();
             window.location = 'http://localhost/UDPT-bt2-PHP-server/Index.php?action=editPlayerPage&PlayerID=' + playerID;
         });
     }
@@ -144,4 +173,6 @@ jQuery(document).ready(function ($) {
     filterSearchWithManyCondition();
     editClubAjax();
     toEditPlayerPage();
+    findAllPlayerOfClubByPage();
+    deleteSinglePlayer();
 });

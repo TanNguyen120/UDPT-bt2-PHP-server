@@ -66,7 +66,7 @@
 <table class="table results" id="results">
     <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">PlayerID</th>
             <th scope="col">FullName</th>
             <th scope="col">Club</th>
             <th scope="col">Nationality</th>
@@ -79,8 +79,8 @@
             $i = 1;
             foreach ($data as $item) 
             {
-                echo "<tr class=\"rowResult\">";
-                echo "<th scope=\"row\">${i}</th>";
+                echo "<tr class=\"rowResult ListPlayerTableRow\">";
+                echo "<th>".$item->PlayerID."</th>";
                 echo "<td>".$item->FullName."</td>";
                 echo "<td>".$item->ClubID."</td>";
                 echo "<td>".$item->Nationality."</td>";

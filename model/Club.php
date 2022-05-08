@@ -59,6 +59,20 @@
             $mysqli->close();
             return $clubList;
         }
+
+        public static function findByName($name) {
+            $mysqli = connectToDb();
+            $mysqli->query("SET NAMES utf8");
+            // Câu lệnh truy vấn theo cấu trúc SQL
+            $query = "SELECT * FROM Club WHERE ClubName = '${name}'";
+            $result = $mysqli->query($query)->fetch_object();
+            $club = new ClubModel();
+            $club->ClubID = $result->ClubID;
+            $club->ClubName = $result->ClubName;
+            $club->Stadium = $result->StadiumID;
+            $club->ShortName = $result->Shortname;
+            
+        }
         // Hàm trả về tổng số trang của bảng club
         public static function countAllPage() {
             $mysqli = connectToDb();

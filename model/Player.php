@@ -249,6 +249,22 @@ class PlayerModel
     }
     
 
+    public static function updatePlayer(PlayerModel $player) {
+        $mysqli = connectToDb();
+        $mysqli->query("SET NAMES utf8");
+        // Câu lệnh truy vấn theo cấu trúc SQL
+        $query = "UPDATE Player SET FullName = '$player->FullName', ClubID = '$player->ClubID', Number = '$player->Number', Position = '$player->Position' WHERE PlayerID = '$player->PlayerID'";
+        $result = $mysqli->query($query);
+        if($result)
+        {
+            $mysqli->close();
+            return true;
+        }
+        else{
+            $mysqli->close();
+            return false;
+        }
+    }
 
     public static function addPlayer($pl)
     {
@@ -292,11 +308,11 @@ class PlayerModel
         return $sv;
     }
 
-    public static function delete($mssv)
+    public static function deleteSingle($playerID)
     {
         $mysqli = connectToDb();        
         $mysqli->query("SET NAMES utf8");
-        $query = "DELETE FROM SINHVIEN WHERE MSSV=$mssv";
+        $query = "DELETE FROM Player WHERE PlayerID=$playerID";
         $r = 0;
         if ($mysqli->query($query))       
             $r = 1;

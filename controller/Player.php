@@ -37,6 +37,21 @@ class PlayerController
         }
     }
 
+    public function deleteSinglePlayer()
+    {
+        if(isset($_REQUEST["playerID"]))
+        {
+            $playerID = $_REQUEST["playerID"];
+            $result = PlayerModel::deleteSingle($playerID);
+            if($result)
+            {
+                echo "Successfully deleted!";
+            }else{
+                echo "Failed to delete!";
+            }
+        }
+            
+    }
     public function findByNameSearchBar()
     {
         if(isset($_REQUEST["page"]) && isset($_REQUEST["playerName"]))
@@ -152,17 +167,12 @@ class PlayerController
         require("./template/template.phtml");
     }
 
-    public function editPlayerFromForm(){
-        $player = new PlayerModel();
-        $player->PlayerID = $_REQUEST["PlayerID"];
-        $player->FullName = $_REQUEST["FullName"];
-        $player->ClubID = $_REQUEST["ClubName"];
 
-    }
 
     public function add()
     {
         $data = "";
+        $allClub = ClubModel::getAllClub();
         if (isset($_REQUEST["PlayerID"]))
         {
             $pl= new PlayerModel();
@@ -188,6 +198,27 @@ class PlayerController
         $allClub = ClubModel::getAllClub();
         $player = PlayerModel::findByID($_REQUEST["PlayerID"]);
         $data ='please fill all the information on the form above';
+        $VIEW = "./view/editPlayerInfo.phtml";
+        require("./template/template.phtml");
+
+    }
+    public function editPlayerFromForm(){
+        $player = new PlayerModel();
+        $player->PlayerID = $_REQUEST["PlayerID"];
+        $player->FullName = $_REQUEST["FullName"];
+        $player->ClubID = $_REQUEST["ClubID"];
+        $player->Position = $_REQUEST["Position"];
+        $player->Number = $_REQUEST["Number"];  
+        $player->Nationality = $_REQUEST["Nationality"];
+        $result = PlayerModel::updatePlayer($player);
+        $data = '';
+        if($result){
+            $data = 'updated';
+        }else{
+            $data = 'update failed';
+        }
+        $player = PlayerModel::findByID($_REQUEST["PlayerID"]);
+        $allCLUB = ClubModel::getAllClub();
         $VIEW = "./view/editPlayerInfo.phtml";
         require("./template/template.phtml");
 

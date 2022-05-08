@@ -23,6 +23,10 @@
             <th scope="col">Nationality</th>
             <th scope="col">Position</th>
             <th scope="col">Number</th>
+            <th scope="col">Delete</th>
+            <th scope="col"> Edit </th>
+            <th scope="col">Single Delete</th>
+            <!-- <th scope="col"> View Club </th> -->
         </tr>
     </thead>
     <tbody>
@@ -37,6 +41,9 @@
                 echo "<td>".$item->Nationality."</td>";
                 echo "<td>".$item->Position."</td>";
                 echo "<td>".$item->Number."</td>";
+                echo '<td><input class="form-check-input" type="checkbox" value="" class="playerListDeleteCheck"></td>';
+                echo '<td> <button type="button" class="btn playerTableBtn"> <i class="bi bi-pencil-square"></i> edit</button></td>';
+                echo '<td> <button type="button" class="btn deletePlayerBtn"><i class="bi bi-person-x"></i> delete</button></td>';
                 echo "</tr>";
                 $i++;
             }
