@@ -206,6 +206,12 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    function toClubList() {
+        $(document).on('click', '#clubLogo', function () {
+            window.location = 'http://localhost/UDPT-bt2-PHP-server/Index.php?action=list_club&page=1';
+        })
+
+    }
 
 
     //*********************************************************************************************************************************** */
@@ -221,4 +227,5 @@ jQuery(document).ready(function ($) {
     deleteSinglePlayer();
     deleteMultiplePlayer();
     toHomePage();
+    toClubList();
 });
