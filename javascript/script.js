@@ -200,6 +200,12 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    function toHomePage() {
+        $(document).on('click', '#logo', function () {
+            window.location = 'http://localhost/UDPT-bt2-PHP-server/Index.php';
+        });
+    }
+
 
 
     //*********************************************************************************************************************************** */
@@ -214,4 +220,5 @@ jQuery(document).ready(function ($) {
     findAllPlayerOfClubByPage();
     deleteSinglePlayer();
     deleteMultiplePlayer();
+    toHomePage();
 });
